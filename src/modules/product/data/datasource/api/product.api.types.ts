@@ -11,12 +11,12 @@ import {
 } from './product.api.responseDto';
 
 export interface IProductApi {
-  getProductList: (
-    params: IGetProductListRequestDto,
-  ) => Promise<IGetProductListResponseDto>;
   getProduct: (
     params: IGetProductRequestDto,
   ) => Promise<IGetProductResponseDto>;
+  getProductList: (
+    params?: IGetProductListRequestDto,
+  ) => Promise<IGetProductListResponseDto>;
   addProduct: (params: IAddProductRequestDto) => Promise<void>;
   updateProduct: (params: IUpdateProductRequestDto) => Promise<void>;
   deleteProduct: (params: IDeleteProductRequestDto) => Promise<void>;

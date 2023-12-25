@@ -8,7 +8,7 @@ import {
 } from './params/product.params';
 
 export interface IProductRepositoryImplementation {
-  getProductList(params: IGetProductListParams): Promise<IProductEntity[]>;
+  getProductList(params?: IGetProductListParams): Promise<IProductEntity[]>;
   getProduct(params: IGetProductParams): Promise<IProductEntity>;
   addProduct(params: IAddProductParams): Promise<void>;
   updateProduct(params: IUpdateProductParams): Promise<void>;

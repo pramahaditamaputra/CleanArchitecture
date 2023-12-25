@@ -1,11 +1,4 @@
 import {
-  IAddProductRequestDto,
-  IDeleteProductRequestDto,
-  IGetProductListRequestDto,
-  IGetProductRequestDto,
-  IUpdateProductRequestDto,
-} from './product.api.requestDto';
-import {
   IGetProductListResponseDto,
   IGetProductResponseDto,
 } from './product.api.responseDto';
@@ -14,7 +7,7 @@ import {IProductApi} from './product.api.types';
 
 const productApi = (): IProductApi => {
   return {
-    getProductList: async (params: IGetProductListRequestDto) => {
+    getProductList: async params => {
       let endpointPath = '/products';
       if (params?.limit) {
         endpointPath = endpointPath.concat(`?limit=${params.limit}`);
@@ -24,19 +17,19 @@ const productApi = (): IProductApi => {
       );
       return response.data;
     },
-    getProduct: async (params: IGetProductRequestDto) => {
+    getProduct: async params => {
       const response = await httpClient.get<IGetProductResponseDto>(
         `/products/${params.id}`,
       );
       return response.data;
     },
-    addProduct: async (params: IAddProductRequestDto) => {
+    addProduct: async params => {
       await httpClient.post('/products', params);
     },
-    updateProduct: async (params: IUpdateProductRequestDto) => {
+    updateProduct: async params => {
       await httpClient.put(`/products/${params.id}`, params);
     },
-    deleteProduct: async (params: IDeleteProductRequestDto) => {
+    deleteProduct: async params => {
       await httpClient.delete(`/products/${params.id}`);
     },
   };

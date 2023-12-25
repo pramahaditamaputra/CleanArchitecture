@@ -7,7 +7,7 @@ export const getProductListUseCase = (
   repo: IProductRepositoryImplementation,
 ): BaseUseCase<IGetProductListParams, Promise<IProductEntity[]>> => {
   return {
-    execute: (params: IGetProductListParams) => {
+    execute: (params?: IGetProductListParams) => {
       return repo.getProductList(params);
     },
   };

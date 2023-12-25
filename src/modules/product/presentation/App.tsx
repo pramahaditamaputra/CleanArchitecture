@@ -7,8 +7,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useGetAllProducts} from '../application/hooks/useGetAllProducts';
+import {useLogin} from '../../auth/application/hooks/useLogin';
 
 const App = () => {
   const {
@@ -19,6 +20,8 @@ const App = () => {
     getAllProducts,
   } = useGetAllProducts();
 
+  const {data: auth, login} = useLogin();
+
   const renderListProducts = () => {
     return products?.map(product => (
       <View key={product.id}>
@@ -27,6 +30,12 @@ const App = () => {
       </View>
     ));
   };
+
+  useEffect(() => {
+    login({username: 'kminchelle', password: '0lelplR'});
+  }, []);
+
+  console.log('auth', auth);
 
   return (
     <SafeAreaView>

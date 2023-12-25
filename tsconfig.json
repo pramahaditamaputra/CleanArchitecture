@@ -22,6 +22,7 @@
     ],
     "allowJs": true,
     "jsx": "react-native",
+    "strict": false,
     "noEmit": true,
     "isolatedModules": true,
     "moduleResolution": "bundler",
@@ -34,7 +35,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     // Causes issues with package.json "exports"
-    "forceConsistentCasingInFileNames": false
+    "forceConsistentCasingInFileNames": false,
   },
   "exclude": [
     "node_modules",
