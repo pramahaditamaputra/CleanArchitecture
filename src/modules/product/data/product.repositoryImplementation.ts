@@ -1,5 +1,5 @@
-import {IProductRepositoryImplementation} from '../../domain/product.repository';
-import {IProductApi} from './api/product.api.types';
+import {IProductRepositoryImplementation} from '../domain/product.repository';
+import {IProductApi} from './datasource/api/product.api.types';
 import {
   addProductParamsToRequestDtoMapper,
   productListDtoToEntityMapper,

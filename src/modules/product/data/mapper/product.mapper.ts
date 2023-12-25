@@ -1,10 +1,10 @@
-import {IProductEntity} from '../../../domain/entity/product.entity';
-import {IAddProductParams} from '../../../domain/params/product.params';
-import {IAddProductRequestDto} from '../api/product.api.requestDto';
+import {IProductEntity} from '../../domain/entity/product.entity';
+import {IAddProductParams} from '../../domain/params/product.params';
+import {IAddProductRequestDto} from '../datasource/api/product.api.requestDto';
 import {
   IGetProductListResponseDto,
   IGetProductResponseDto,
-} from '../api/product.api.responseDto';
+} from '../datasource/api/product.api.responseDto';
 
 export const productDtoToEntityMapper = (
   productDto: IGetProductResponseDto,

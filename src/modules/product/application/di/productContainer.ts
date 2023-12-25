@@ -1,5 +1,5 @@
 import productApi from '../../data/datasource/api/product.api';
-import productRepositoryImplementation from '../../data/datasource/product.repositoryImplementation';
+import productRepositoryImplementation from '../../data/product.repositoryImplementation';
 import {getProductByIdtUseCase} from '../../domain/usecase/getProductByIdUseCase';
 import {getProductListUseCase} from '../../domain/usecase/getProductListUseCase';
 
