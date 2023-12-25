@@ -15,12 +15,12 @@ import {IProductApi} from './product.api.types';
 const productApi = (): IProductApi => {
   return {
     getProductList: async (params: IGetProductListRequestDto) => {
-      const endpointPath = '/products';
+      let endpointPath = '/products';
       if (params?.limit) {
-        endpointPath.concat(`?limit=${params.limit}`);
+        endpointPath = endpointPath.concat(`?limit=${params.limit}`);
       }
       const response = await httpClient.get<IGetProductListResponseDto>(
-        `${endpointPath}`,
+        endpointPath,
       );
       return response.data;
     },
