@@ -33,3 +33,7 @@ export interface IDeleteProductRequestDto {
 export interface IGetProductRequestDto {
   id: number;
 }
+
+export interface IGetProductListRequestDto {
+  limit: number;
+}

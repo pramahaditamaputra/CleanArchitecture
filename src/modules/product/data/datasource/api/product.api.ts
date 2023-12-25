@@ -1,6 +1,7 @@
 import {
   IAddProductRequestDto,
   IDeleteProductRequestDto,
+  IGetProductListRequestDto,
   IGetProductRequestDto,
   IUpdateProductRequestDto,
 } from './product.api.requestDto';
@@ -13,9 +14,13 @@ import {IProductApi} from './product.api.types';
 
 const productApi = (): IProductApi => {
   return {
-    getProductList: async () => {
+    getProductList: async (params: IGetProductListRequestDto) => {
+      const endpointPath = '/products';
+      if (params?.limit) {
+        endpointPath.concat(`?limit=${params.limit}`);
+      }
       const response = await httpClient.get<IGetProductListResponseDto>(
-        '/products',
+        `${endpointPath}`,
       );
       return response.data;
     },

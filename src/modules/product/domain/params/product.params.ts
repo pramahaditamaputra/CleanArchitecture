@@ -15,6 +15,10 @@ export interface IGetProductParams {
   id: number;
 }
 
+export interface IGetProductListParams {
+  limit: number;
+}
+
 export interface IUpdateProductParams {
   id: number;
   title: string;

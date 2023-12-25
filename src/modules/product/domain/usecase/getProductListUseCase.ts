@@ -1,13 +1,14 @@
 import {BaseUseCase} from '../../../../shared/utils/BaseUseCase';
 import {IProductEntity} from '../entity/product.entity';
+import {IGetProductListParams} from '../params/product.params';
 import {IProductRepositoryImplementation} from '../product.repository';
 
 export const getProductListUseCase = (
   repo: IProductRepositoryImplementation,
-): BaseUseCase<null, Promise<IProductEntity[]>> => {
+): BaseUseCase<IGetProductListParams, Promise<IProductEntity[]>> => {
   return {
-    execute: () => {
-      return repo.getProductList();
+    execute: (params: IGetProductListParams) => {
+      return repo.getProductList(params);
     },
   };
 };

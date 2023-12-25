@@ -1,6 +1,7 @@
 import {
   IAddProductRequestDto,
   IDeleteProductRequestDto,
+  IGetProductListRequestDto,
   IGetProductRequestDto,
   IUpdateProductRequestDto,
 } from './product.api.requestDto';
@@ -10,7 +11,9 @@ import {
 } from './product.api.responseDto';
 
 export interface IProductApi {
-  getProductList: () => Promise<IGetProductListResponseDto>;
+  getProductList: (
+    params: IGetProductListRequestDto,
+  ) => Promise<IGetProductListResponseDto>;
   getProduct: (
     params: IGetProductRequestDto,
   ) => Promise<IGetProductResponseDto>;

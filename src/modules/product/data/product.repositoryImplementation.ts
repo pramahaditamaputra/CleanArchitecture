@@ -9,8 +9,8 @@ const productRepositoryImplementation = (
   api: IProductApi,
 ): IProductRepositoryImplementation => {
   return {
-    getProductList: async () => {
-      const res = await api.getProductList();
+    getProductList: async params => {
+      const res = await api.getProductList(params);
       return productListDtoToEntityMapper(res);
     },
     getProduct: async params => {
