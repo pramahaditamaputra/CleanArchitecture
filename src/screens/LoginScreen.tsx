@@ -12,7 +12,7 @@ const LoginScreen = () => {
         source={require('./../shared/assets/lottiefiles/fast-shopping-delivery.json')}
         autoPlay
         loop
-        style={{height: Dimensions.get('window').height / 2.5}}
+        style={{height: Dimensions.get('window').height / 2}}
       />
       <LoginForm />
       <Modal title="error" content="error" />
@@ -23,8 +23,8 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  titleText: {},
   container: {
     padding: 20,
+    justifyContent: 'flex-end',
   },
 });

@@ -2,22 +2,23 @@ import {
   SafeAreaView,
   StyleSheet,
   View as RNView,
-  StyleProp,
-  ViewStyle,
   ViewProps,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import React from 'react';
 
-interface IViewProps extends ViewProps {
-  children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
-}
-
-const MainView: React.FC<IViewProps> = ({children, style}) => {
+const MainView: React.FC<ViewProps> = props => {
   return (
-    <SafeAreaView style={styles.container}>
-      <RNView style={[styles.container, style]}>{children}</RNView>
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <SafeAreaView style={styles.container} {...props}>
+        <RNView style={[styles.container, props.style]} {...props}>
+          {props.children}
+        </RNView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
