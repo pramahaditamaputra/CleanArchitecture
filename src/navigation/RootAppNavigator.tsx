@@ -1,4 +1,6 @@
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AppBottomTabNavigator from './BottomTabNavigator';
 import LoginScreen from '../screens/LoginScreen';
 
 const Stack = createNativeStackNavigator();
@@ -6,7 +8,20 @@ const Stack = createNativeStackNavigator();
 const RootAppNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Group>
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen
+          name="AppBottomTabNavigator"
+          component={AppBottomTabNavigator}
+          options={{headerShown: false}}
+        />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };

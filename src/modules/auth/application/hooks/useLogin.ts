@@ -3,6 +3,7 @@ import {ILoginEntity} from '../../domain/entity/auth.entity';
 import {ILoginParams} from '../../domain/params/auth.params';
 import {usecases} from '../di/authContainer';
 import {useMutation} from '@tanstack/react-query';
+import {useSharedModalStore} from '../../../../shared/store/shared.modal.store';
 
 export const useLogin = () => {
   const login = useMutation<ILoginEntity, AxiosError, ILoginParams>({
@@ -12,6 +13,7 @@ export const useLogin = () => {
     },
     onMutate: async _variables => {
       console.log('ON MUTATE');
+      useSharedModalStore.getState().setIsVisible();
     },
     onError: async (error, _variables, _context) => {
       console.log('ON ERROR', error);
@@ -22,9 +24,9 @@ export const useLogin = () => {
     onSettled: async (_data, _error, _variables, _context) => {
       if (_error) {
         console.log('ON SETTLED ERROR');
-        return;
       }
       console.log('ON SETTLED ERROR OR SUCCESS');
+      useSharedModalStore.getState().setIsVisible();
     },
   });
 
