@@ -5,7 +5,7 @@ import {
   productListDtoToEntityMapper,
 } from './mapper/product.mapper';
 
-const productRepositoryImplementation = (
+export const productRepositoryImplementation = (
   api: IProductApi,
 ): IProductRepositoryImplementation => {
   return {
@@ -28,5 +28,3 @@ const productRepositoryImplementation = (
     },
   };
 };
-
-export default productRepositoryImplementation;

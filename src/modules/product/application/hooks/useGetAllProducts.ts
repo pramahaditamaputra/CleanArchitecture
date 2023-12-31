@@ -1,32 +1,13 @@
-import {useEffect, useState} from 'react';
-import {IProductEntity} from '../../domain/entity/product.entity';
+import {queryKeys} from '../../../../shared/constants/queryKeys';
 import {usecases} from '../di/productContainer';
+import {useQuery} from '@tanstack/react-query';
+import {IProductEntity} from '../../domain/entity/product.entity';
 
-export const useGetAllProducts = () => {
-  const [data, setData] = useState<IProductEntity[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [error, setError] = useState<string>();
+export const useProductListQuery = () => {
+  const productListQuery = useQuery<IProductEntity[], Error>({
+    queryKey: queryKeys.products,
+    queryFn: () => usecases().getProductListUseCase.execute(),
+  });
 
-  const getAllProducts = async () => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const response = await usecases().getProductListUseCase.execute();
-      setData(response);
-    } catch (err) {
-      if (err instanceof Error) {
-        setIsError(true);
-        setError(err.message);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
-  return {data, isLoading, isError, error, getAllProducts};
+  return productListQuery;
 };

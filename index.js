@@ -2,8 +2,9 @@
  * @format
  */
 
+import 'react-native-gesture-handler';
 import {AppRegistry} from 'react-native';
-import App from './src/modules/product/presentation/App';
+import Bootstrap from './src/screens/Bootstrap';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => Bootstrap);

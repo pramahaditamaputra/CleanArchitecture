@@ -7,7 +7,7 @@ export const getProductByIdtUseCase = (
   repo: IProductRepositoryImplementation,
 ): BaseUseCase<IGetProductParams, Promise<IProductEntity>> => {
   return {
-    execute: async (params?: IGetProductParams) => {
+    execute: async (params: IGetProductParams | undefined) => {
       return await repo.getProduct(params!);
     },
   };

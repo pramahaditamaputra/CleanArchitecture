@@ -5,7 +5,7 @@ import {
 import {httpClient} from '../../../../../shared/libraries/axios/httpClient';
 import {IProductApi} from './product.api.types';
 
-const productApi = (): IProductApi => {
+export const productApi = (): IProductApi => {
   return {
     getProductList: async params => {
       let endpointPath = '/products';
@@ -34,5 +34,3 @@ const productApi = (): IProductApi => {
     },
   };
 };
-
-export default productApi;
