@@ -2,10 +2,9 @@ import React from 'react';
 import MainView from '../shared/components/MainView';
 import LoginForm from '../modules/auth/presentation/components/LoginForm';
 import {Dimensions, StyleSheet} from 'react-native';
-import Modal from '../shared/components/Modal';
 import LottieView from 'lottie-react-native';
 
-const LoginScreen = () => {
+const LoginScreen: React.FC = () => {
   return (
     <MainView style={styles.container}>
       <LottieView
@@ -15,7 +14,6 @@ const LoginScreen = () => {
         style={{height: Dimensions.get('window').height / 2}}
       />
       <LoginForm />
-      <Modal title="error" content="error" />
     </MainView>
   );
 };

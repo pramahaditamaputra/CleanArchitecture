@@ -17,7 +17,7 @@ const RootAppNavigator = () => {
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen
-          name="AppBottomTabNavigator"
+          name="MainApp"
           component={AppBottomTabNavigator}
           options={{headerShown: false}}
         />
