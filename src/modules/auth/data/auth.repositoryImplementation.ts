@@ -18,5 +18,9 @@ export const authRepositoryImplementation = (
       await localStorage.saveUser(mappedRes);
       return mappedRes;
     },
+    getUser: async () => {
+      const user = await localStorage.getUser();
+      return user;
+    },
   };
 };

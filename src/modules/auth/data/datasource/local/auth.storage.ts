@@ -11,5 +11,9 @@ export const authStorage = (): IAuthStorage => {
       LocalStorageService.save('user', data);
       return Promise.resolve();
     },
+    async getUser() {
+      const user = await LocalStorageService.get('user');
+      return Promise.resolve(user);
+    },
   };
 };
