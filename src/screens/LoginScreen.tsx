@@ -6,7 +6,7 @@ import LottieView from 'lottie-react-native';
 
 const LoginScreen: React.FC = () => {
   return (
-    <MainView style={styles.container}>
+    <MainView customStyle={styles.loginScreenContainer}>
       <LottieView
         source={require('./../shared/assets/lottiefiles/fast-shopping-delivery.json')}
         autoPlay
@@ -21,8 +21,7 @@ const LoginScreen: React.FC = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
+  loginScreenContainer: {
     justifyContent: 'flex-end',
   },
 });

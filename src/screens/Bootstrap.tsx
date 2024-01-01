@@ -6,20 +6,23 @@ import {NavigationContainer} from '@react-navigation/native';
 import RootAppNavigator from '../navigation/RootAppNavigator';
 import AuthenticateAppNavigator from '../navigation/AuthenticateAppNavigator';
 import {ThemeProvider} from 'react-native-elements';
+import {KeyboardProvider} from 'react-native-keyboard-controller';
 
 export const isSignedIn = false;
 
 const Bootstrap = () => {
   return (
     <ThemeProvider>
-      <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <NavigationContainer>
-            {/* {!isSignedIn ? <AuthenticateAppNavigator /> : <RootAppNavigator />} */}
-            <RootAppNavigator />
-          </NavigationContainer>
-        </QueryClientProvider>
-      </SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider>
+          <KeyboardProvider>
+            <NavigationContainer>
+              {/* {!isSignedIn ? <AuthenticateAppNavigator /> : <RootAppNavigator />} */}
+              <RootAppNavigator />
+            </NavigationContainer>
+          </KeyboardProvider>
+        </SafeAreaProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };

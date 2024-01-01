@@ -3,18 +3,24 @@ import {
   StyleSheet,
   View as RNView,
   ViewProps,
-  KeyboardAvoidingView,
+  StyleProp,
+  ViewStyle,
   Platform,
 } from 'react-native';
 import React from 'react';
+import {KeyboardAvoidingView} from 'react-native-keyboard-controller';
+interface IMainViewProps extends ViewProps {
+  customStyle?: StyleProp<ViewStyle>;
+}
 
-const MainView: React.FC<ViewProps> = props => {
+const MainView: React.FC<IMainViewProps> = props => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <SafeAreaView style={styles.container} {...props}>
-        <RNView style={[styles.container, props.style]} {...props}>
+      contentContainerStyle={styles.container}
+      style={[styles.container, props.customStyle]}>
+      <SafeAreaView style={[styles.container, props.customStyle]} {...props}>
+        <RNView style={[styles.container, props.customStyle]} {...props}>
           {props.children}
         </RNView>
       </SafeAreaView>
@@ -28,5 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    padding: 7.5,
   },
 });
