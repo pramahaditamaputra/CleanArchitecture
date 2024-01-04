@@ -6,19 +6,9 @@ import {useMutation} from '@tanstack/react-query';
 import {useSharedModalStore} from '../../../../shared/store/shared.modal.store';
 import {useNavigation} from '../../../../navigation/useNavigation';
 
-/**
- * Custom hook for handling login functionality.
- * @returns The login mutation function.
- */
 export const useLogin = () => {
   const navigation = useNavigation();
 
-  /**
-   * Performs a login mutation.
-   *
-   * @param params - The login parameters.
-   * @returns A Promise that resolves to the login entity.
-   */
   const login = useMutation<ILoginEntity, AxiosError, ILoginParams>({
     mutationFn: async (params: ILoginParams) => {
       const res = await usecases().loginUsecase.execute(params);

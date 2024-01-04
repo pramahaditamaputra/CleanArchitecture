@@ -1,6 +1,3 @@
-/**
- * Represents the response data structure for login API.
- */
 export interface ILoginResponseDto {
   id: number;
   username: string;

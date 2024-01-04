@@ -10,11 +10,6 @@ import AppNavigator from '../navigation/AppNavigator';
 import {ThemeProvider} from 'react-native-elements';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 
-/**
- * The Bootstrap component is the starting point of the application.
- * It initializes various providers and wraps the navigation container
- * used in the app.
- */
 const Bootstrap = () => {
   const navigationRef = useNavigationContainerRef();
   const routeNameRef = useRef<string>();
