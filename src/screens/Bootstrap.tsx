@@ -1,24 +1,51 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {QueryClientProvider} from '@tanstack/react-query';
 import queryClient from '../shared/libraries/reactquery/queryClient';
-import {NavigationContainer} from '@react-navigation/native';
-import RootAppNavigator from '../navigation/RootAppNavigator';
-import AuthenticateAppNavigator from '../navigation/AuthenticateAppNavigator';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
+import AppNavigator from '../navigation/AppNavigator';
 import {ThemeProvider} from 'react-native-elements';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 
-export const isSignedIn = false;
-
+/**
+ * The Bootstrap component is the starting point of the application.
+ * It initializes various providers and wraps the navigation container
+ * used in the app.
+ */
 const Bootstrap = () => {
+  const navigationRef = useNavigationContainerRef();
+  const routeNameRef = useRef<string>();
+
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <SafeAreaProvider>
           <KeyboardProvider>
-            <NavigationContainer>
-              {/* {!isSignedIn ? <AuthenticateAppNavigator /> : <RootAppNavigator />} */}
-              <RootAppNavigator />
+            <NavigationContainer
+              ref={navigationRef}
+              onReady={() => {
+                routeNameRef.current = navigationRef.getCurrentRoute().name;
+              }}
+              onStateChange={async () => {
+                const previousRouteName = routeNameRef.current;
+                const currentRouteName = navigationRef.getCurrentRoute().name;
+                const trackScreenView = (routeName: string) => {
+                  // Your implementation of analytics goes here!
+                  console.log('currentRouteName', routeName);
+                };
+
+                if (previousRouteName !== currentRouteName) {
+                  // Save the current route name for later comparison
+                  routeNameRef.current = currentRouteName;
+
+                  // Replace the line below to add the tracker from a mobile analytics SDK
+                  await trackScreenView(currentRouteName);
+                }
+              }}>
+              <AppNavigator />
             </NavigationContainer>
           </KeyboardProvider>
         </SafeAreaProvider>

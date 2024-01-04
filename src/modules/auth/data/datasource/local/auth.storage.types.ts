@@ -1,12 +1,21 @@
 import {ILoginEntity} from '../../../domain/entity/auth.entity';
 
+/**
+ * Represents a storage interface for authentication-related data.
+ */
 interface IAuthStorage {
-  // saveTokens(token: TokenEntityType): Promise<void>;
+  /**
+   * Saves the user data.
+   * @param user The user data to be saved.
+   * @returns A promise that resolves when the user data is successfully saved.
+   */
   saveUser(user: ILoginEntity): Promise<void>;
+
+  /**
+   * Retrieves the user data.
+   * @returns A promise that resolves with the user data, or null if no user data is found.
+   */
   getUser(): Promise<ILoginEntity | null>;
-  //   saveLoginData(data: LogInParamType): Promise<void>;
-  //   getLoginData(): Promise<LogInParamType>;
-  //   wipe(): Promise<void>;
 }
 
 export type {IAuthStorage};

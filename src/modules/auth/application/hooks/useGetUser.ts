@@ -1,20 +1,20 @@
-import {useEffect, useState} from 'react';
 import {usecases} from '../di/authContainer';
-import {ILoginEntity} from '../../domain/entity/auth.entity';
 
+/**
+ * Custom hook to get user information.
+ * @returns An object with a function `getUserInfo` that returns a promise with the user information.
+ */
 export const useGetUser = () => {
-  const [data, setData] = useState<ILoginEntity>();
+  /**
+   * Retrieves user information.
+   * @returns {Promise<any>} The user information.
+   */
   const getUserInfo = async () => {
     const res = await usecases().getUserUsecase.execute();
-    setData(res);
+    return res;
   };
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
 
   return {
     getUserInfo,
-    data,
   };
 };

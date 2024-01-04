@@ -1,7 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import LocalStorageService from '../shared/asyncstorage/LocalStorageService';
 
 const HomeScreen = () => {
+  useEffect(() => {
+    LocalStorageService.clear();
+  }, []);
   return (
     <View>
       <Text>HomeScreen</Text>
@@ -10,5 +14,3 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({});
